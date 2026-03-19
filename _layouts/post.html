@@ -1,0 +1,11 @@
+---
+layout: default
+---
+<div class="post-wrap">
+  <div class="post-inner">
+    <a href="{{ '/news' | relative_url }}" class="post-back">← All News</a>
+    <div class="post-eyebrow">{{ page.date | date: "%B %-d, %Y" }}</div>
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-body">{{ content }}</div>
+  </div>
+</div>

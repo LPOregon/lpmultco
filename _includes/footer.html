@@ -1,0 +1,31 @@
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-title">Multnomah Libertarians<span class="footer-sub">LP Oregon Affiliate · Portland, OR</span></div>
+      <p class="footer-desc">Fighting for individual liberty and personal responsibility in Multnomah County.</p>
+      <div class="social-links">
+        <a href="{{ site.twitter }}" class="social-link" target="_blank" rel="noopener">Twitter / X</a>
+        <a href="{{ site.facebook }}" class="social-link" target="_blank" rel="noopener">Facebook</a>
+        <a href="{{ site.instagram }}" class="social-link" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Navigate</h5>
+      <a href="{{ '/#events' | relative_url }}">Events</a>
+      <a href="{{ '/news' | relative_url }}">News</a>
+      <a href="{{ '/#about' | relative_url }}">About Us</a>
+      <a href="{{ '/#involved' | relative_url }}">Join / Donate</a>
+      <a href="{{ '/#resources' | relative_url }}">Resources</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+      <a href="{{ site.lp_oregon }}" target="_blank" rel="noopener">LP Oregon</a>
+      <a href="{{ site.lp_national }}" target="_blank" rel="noopener">LP National</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© {{ 'now' | date: '%Y' }} Multnomah Libertarians. Paid for by the Multnomah Libertarians PAC.</span>
+    <span>Not authorized by any candidate or candidate's committee.</span>
+  </div>
+</footer>

@@ -1,0 +1,184 @@
+---
+layout: default
+---
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Multnomah County · Portland, Oregon</div>
+    <h1>All Your Freedoms.<br><em>All the Time.</em></h1>
+    <p class="hero-sub">The Libertarian Party affiliate for Multnomah County. Fighting for individual liberty and personal responsibility in Portland and beyond.</p>
+    <div class="hero-actions">
+      <a href="#involved" class="btn-primary">Get Involved</a>
+      <a href="#events" class="btn-outline">Next Meeting →</a>
+    </div>
+  </div>
+</div>
+
+<div class="strip">
+  <div class="strip-item">Individual Liberty</div>
+  <div class="strip-sep"></div>
+  <div class="strip-item">Personal Responsibility</div>
+  <div class="strip-sep"></div>
+  <div class="strip-item">Non-Aggression</div>
+  <div class="strip-sep"></div>
+  <div class="strip-item">Free Markets</div>
+  <div class="strip-sep"></div>
+  <div class="strip-item">Peace &amp; Free Trade</div>
+</div>
+
+<!-- SIGNUP + DONATE -->
+<div class="signup-band" id="involved">
+  <div>
+    <h2>Stay in the Loop</h2>
+    <p>Event reminders and libertarian news, about once a month. We never share your information.</p>
+  </div>
+  <div class="google-form-wrap">
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdnuPJDDDK8pI3BcUHZUKihRj2SUvTgOsEmq-9qFWJZ1E67Xw/viewform?embedded=true"
+      height="480"
+      frameborder="0"
+      marginheight="0"
+      marginwidth="0">Loading…</iframe>
+  </div>
+</div>
+<div class="donate-band">
+  <p>Support liberty in Multnomah County. Donations up to $50/year may qualify for an Oregon state income tax credit — write it to us instead of Salem.</p>
+  <a href="{{ site.anedot_url }}" class="donate-btn" target="_blank" rel="noopener">Donate via Anedot →</a>
+</div>
+
+<!-- PILLARS -->
+<section class="pillars">
+  <div class="eyebrow eyebrow-dark">What We Stand For</div>
+  <div class="sec-title">The Party of Principle</div>
+  <p class="sec-lead">Libertarians oppose government interference in personal, family, and business decisions. Our principles can't be bought, negotiated, or intimidated.</p>
+  <div class="pillars-grid">
+    <div class="pillar">
+      <div class="pillar-num">01</div>
+      <h3>Individual Liberty</h3>
+      <p>Every person has the right to live their life as they see fit — as long as they impose no force or fraud on others.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">02</div>
+      <h3>Free Markets</h3>
+      <p>Voluntary exchange and competition — not government control — create abundance and lasting prosperity.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">03</div>
+      <h3>Peace &amp; Non-Intervention</h3>
+      <p>A foreign policy of non-intervention, peace, and free trade. Cooperation without coercion, at home and abroad.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="events" id="events">
+  <div class="eyebrow">Upcoming</div>
+  <div class="sec-title sec-title-light">Monthly Meetups</div>
+  <p class="sec-lead sec-lead-light">Join us the {{ site.data.site.meetup.day }} at {{ site.data.site.meetup.time }}. {{ site.data.site.meetup.notes }}</p>
+
+  <div class="event-card">
+    <div class="event-date">
+      <div class="month">Every</div>
+      <div class="day">1st</div>
+      <div class="dow">Sat</div>
+    </div>
+    <div class="event-info">
+      <h4>Multnomah County Libertarian Meetup</h4>
+      <div class="event-meta">
+        <span>{{ site.data.site.meetup.time }}</span>
+        <span>{{ site.data.site.meetup.location }}</span>
+        <span>{{ site.data.site.meetup.address }}</span>
+      </div>
+      <p class="event-desc">{{ site.data.site.meetup.notes }}</p>
+    </div>
+  </div>
+
+  <div class="eb-wrap">
+    <div class="eb-label">RSVP via Eventbrite</div>
+    <div class="eb-clip">
+      <iframe
+        src="https://www.eventbrite.com/cc/multnomah-libertarian-events-1450739"
+        title="Multnomah Libertarian Events"
+        allowtransparency="true"
+        frameborder="0"
+        scrolling="no">
+      </iframe>
+      <div class="eb-fade"></div>
+    </div>
+    <div class="eb-footer">
+      <a href="https://www.eventbrite.com/cc/multnomah-libertarian-events-1450739" target="_blank" rel="noopener" class="eb-link">View all on Eventbrite ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="news-section" id="news">
+  <div class="eyebrow eyebrow-dark">Latest</div>
+  <div class="sec-title">News &amp; Announcements</div>
+  <div class="news-grid">
+    {% for post in site.posts limit:2 %}
+    <a href="{{ post.url | relative_url }}" style="text-decoration:none">
+      <div class="news-card">
+        <div class="news-date">{{ post.date | date: "%b %-d, %Y" }}</div>
+        <div class="news-body">
+          <div class="news-title">{{ post.title }}</div>
+          {% if post.excerpt %}
+          <div class="news-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</div>
+          {% endif %}
+        </div>
+        <div class="news-arrow">→</div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  <div class="news-all">
+    <a href="{{ '/news' | relative_url }}" class="btn-dark">All News →</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="eyebrow eyebrow-dark">Who We Are</div>
+  <div class="sec-title">Multnomah Libertarians</div>
+  <div class="about-grid">
+    <div class="about-body">
+      <p>Multnomah Libertarians serve the Portland metropolitan area, holding monthly in-person meetings, coordinating political action, and hosting social events. Whether you're a longtime libertarian or just liberty-curious, you are welcome at our table!</p>
+    </div>
+    <div>
+      <div class="officers-card">
+        <h4>Current Officers</h4>
+        {% for officer in site.data.site.officers %}
+        <div class="officer">
+          <span>{{ officer.name }}</span>
+          <span class="officer-role">{{ officer.role }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="links-card">
+        <h4>Party Links</h4>
+        <a href="{{ site.lp_national }}" class="ext-link" target="_blank" rel="noopener">LP National — lp.org</a>
+        <a href="{{ site.lp_oregon }}" class="ext-link" target="_blank" rel="noopener">LP Oregon — lporegon.org</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section class="resources" id="resources">
+  <div class="eyebrow eyebrow-dark">Learn More</div>
+  <div class="sec-title">Libertarian Resources</div>
+  <p class="sec-lead">Reading, watching, and thinking about liberty.</p>
+  <div class="resources-grid">
+    {% for resource in site.data.site.resources %}
+    <a href="{{ resource.url }}" class="resource-item" target="_blank" rel="noopener">
+      <div>
+        <div class="resource-name">{{ resource.name }}</div>
+        <div class="resource-desc">{{ resource.description }}</div>
+      </div>
+      <div class="resource-arrow">↗</div>
+    </a>
+    {% endfor %}
+  </div>
+</section>

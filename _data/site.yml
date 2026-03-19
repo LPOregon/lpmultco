@@ -1,0 +1,26 @@
+officers:
+  - name: Annie Kallen
+    role: Acting Chair
+  - name: Shira Newman
+    role: Acting Treasurer
+
+meetup:
+  location: "Dick's Primal Burger"
+  address: "4905 SE Woodstock Blvd, Portland, OR 97206"
+  time: "4:00 PM"
+  day: "First Saturday of every month"
+  notes: "All peaceful people are welcome — you do not need to be a registered Libertarian or Multnomah County resident to attend."
+
+resources:
+  - name: "Free the People"
+    url: "https://freethepeople.org/"
+    description: "Accessible introduction to liberty through stories, videos, and culture"
+  - name: "Reason.com"
+    url: "https://reason.com/"
+    description: "News and commentary from a free minds, free markets perspective"
+  - name: "Cato Institute"
+    url: "https://www.cato.org/"
+    description: "Policy research and analysis from America's leading libertarian think tank"
+  - name: "The Advocates Quiz"
+    url: "https://www.theadvocates.org/quiz/"
+    description: "Find out where you stand on the political spectrum in 10 questions"

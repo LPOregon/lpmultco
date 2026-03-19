@@ -1,0 +1,23 @@
+title: Multnomah Libertarians
+description: An LP Oregon Affiliate — Fighting for individual liberty and personal responsibility in Multnomah County.
+url: "https://www.multnomahlibertarians.com"
+baseurl: ""
+
+email: member@multnomahlibertarians.com
+
+twitter: https://twitter.com/MultCoLiberty
+facebook: https://www.facebook.com/profile.php?id=100083615860054
+instagram: https://www.instagram.com/multnomahlibertarians/
+
+lp_national: https://www.lp.org
+lp_oregon: https://lporegon.org
+
+anedot_url: https://secure.anedot.com/b9ad9d89-92e3-4118-89a4-3e978a4ec2d7/f1f2ecc1-08cb-449d-8582-aa055bc17e7f
+
+markdown: kramdown
+permalink: pretty
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - .DS_Store

@@ -1,0 +1,28 @@
+---
+layout: default
+title: News
+---
+<div class="news-archive-hero">
+  <div class="eyebrow">Multnomah Libertarians</div>
+  <div class="sec-title sec-title-light">News &amp; Announcements</div>
+</div>
+<div class="news-archive-list">
+  <div style="max-width:860px">
+    {% for post in site.posts %}
+    <a href="{{ post.url | relative_url }}" style="display:block;text-decoration:none;margin-bottom:1px">
+      <div class="news-card">
+        <div class="news-date">{{ post.date | date: "%b %-d, %Y" }}</div>
+        <div class="news-body">
+          <div class="news-title">{{ post.title }}</div>
+          {% if post.excerpt %}
+          <div class="news-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</div>
+          {% endif %}
+        </div>
+        <div class="news-arrow">→</div>
+      </div>
+    </a>
+    {% else %}
+    <p style="font-family:var(--serif);font-size:17px;color:#4a5568">No posts yet.</p>
+    {% endfor %}
+  </div>
+</div>

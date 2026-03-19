@@ -1,0 +1,53 @@
+backend:
+  name: github
+  repo: SatanicMechanic/lpmc
+  branch: main
+  # When transferring to the org, change repo to: their-org/lpmc
+  # and update the OAuth app callback URL in GitHub org settings
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+
+  # News posts — create/edit via the CMS UI
+  - name: "posts"
+    label: "News & Announcements"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  # Site settings — officers, meetup info, resources
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "site"
+        label: "Officers, Meetup & Resources"
+        file: "_data/site.yml"
+        fields:
+          - label: "Officers"
+            name: "officers"
+            widget: "list"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Role", name: "role", widget: "string"}
+          - label: "Meetup Details"
+            name: "meetup"
+            widget: "object"
+            fields:
+              - {label: "Location Name", name: "location", widget: "string"}
+              - {label: "Address", name: "address", widget: "string"}
+              - {label: "Time", name: "time", widget: "string"}
+              - {label: "Schedule", name: "day", widget: "string"}
+              - {label: "Welcome Note", name: "notes", widget: "text"}
+          - label: "Resources"
+            name: "resources"
+            widget: "list"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
+              - {label: "Description", name: "description", widget: "string"}
