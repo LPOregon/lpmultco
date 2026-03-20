@@ -31,7 +31,7 @@ nav{background:var(--dark);padding:0 2.5rem;display:grid;grid-template-columns:1
 /* HERO */
 .hero{background:var(--dark);min-height:480px;display:flex;align-items:center;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center 40%;opacity:1}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right, rgba(42,42,45,0.75) 30%, rgba(42,42,45,0.3) 100%)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right, rgba(42,42,45,0.75) 30%, rgba(42,42,45,0.05) 100%)}
 .hero-accent{position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--yellow)}
 .hero-content{position:relative;z-index:1;padding:60px 3rem;max-width:700px}
 .hero-eyebrow{font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--yellow);margin-bottom:14px}
