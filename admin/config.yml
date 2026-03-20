@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: SatanicMechanic/lpmc
+  repo: LPOregon/lpmultco
   branch: main
   # When transferring to the org, change repo to: their-org/lpmc
   # and update the OAuth app callback URL in GitHub org settings
