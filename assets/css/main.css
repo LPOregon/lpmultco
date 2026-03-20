@@ -125,11 +125,13 @@ section{padding:64px 3rem}
 .officer:last-child{border-bottom:none}
 .officer-role{color:var(--muted);font-size:12px}
 .links-card{background:var(--dark);padding:24px;margin-top:14px}
-.links-card h4{font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--yellow);margin-bottom:14px}
-.ext-link{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:13px;color:#fff;transition:color .15s}
-.ext-link:hover{color:var(--yellow)}
+.links-card h4{font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--yellow);margin-bottom:12px}
+.links-intro{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.07)}
+.ext-link{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.07);color:#fff;transition:color .15s;border-left:3px solid transparent;padding-left:0;transition:all .15s}
+.ext-link:hover{color:var(--yellow);border-left-color:var(--yellow);padding-left:8px}
 .ext-link:last-child{border-bottom:none}
-.ext-link::after{content:'↗';color:var(--yellow);font-size:11px}
+.ext-link-name{font-size:13px;font-weight:500;color:inherit}
+.ext-link-desc{font-size:11px;color:var(--muted);margin-top:2px}
 
 /* RESOURCES */
 .resources{background:var(--white)}
