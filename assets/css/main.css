@@ -49,9 +49,9 @@ nav{background:var(--dark);padding:0 2.5rem;display:grid;grid-template-columns:1
 .strip-sep{width:1px;height:14px;background:rgba(0,0,0,.2)}
 
 /* SIGNUP BAND */
-.signup-band{background:var(--dark2);padding:48px 3rem;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;border-bottom:1px solid rgba(254,208,0,.15)}
+.signup-band{background:var(--dark2);padding:48px 3rem;border-bottom:1px solid rgba(254,208,0,.15)}
 .signup-band h2{font-size:28px;font-weight:700;text-transform:uppercase;color:#fff;margin-bottom:8px}
-.signup-band p{font-size:13px;color:var(--muted);line-height:1.7;max-width:400px}
+.signup-band p{font-size:13px;color:var(--muted);line-height:1.7;max-width:600px;margin-bottom:24px}
 .google-form-wrap{margin-top:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);overflow:hidden}
 .google-form-wrap iframe{display:block;width:100%!important;min-width:0!important;border:none}
 
