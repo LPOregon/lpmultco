@@ -117,8 +117,8 @@ section{padding:64px 3rem}
 .about{background:var(--cream)}
 .about-body{margin-top:24px;margin-bottom:40px}
 .about-body p{font-family:var(--serif);font-size:18px;font-weight:300;color:#4a5568;line-height:1.8;max-width:780px}
-.about-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
-.officers-card{background:var(--white);border:1px solid #e0e0e0;border-top:4px solid var(--yellow);padding:24px}
+.about-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.officers-card{background:var(--white);border:1px solid #e0e0e0;border-top:4px solid var(--yellow);padding:24px 24px 8px}
 .officers-card h4{font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
 .officer{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #eee;font-size:15px}
 .officer:last-child{border-bottom:none}
