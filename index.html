@@ -88,21 +88,8 @@ layout: default
     </div>
   </div>
 
-  <div class="eb-wrap">
-    <div class="eb-label">RSVP via Eventbrite</div>
-    <div class="eb-clip">
-      <iframe
-        src="https://www.eventbrite.com/cc/multnomah-libertarian-events-1450739"
-        title="Multnomah Libertarian Events"
-        allowtransparency="true"
-        frameborder="0"
-        scrolling="no">
-      </iframe>
-      <div class="eb-fade"></div>
-    </div>
-    <div class="eb-footer">
-      <a href="https://www.eventbrite.com/cc/multnomah-libertarian-events-1450739" target="_blank" rel="noopener" class="eb-link">View all on Eventbrite ↗</a>
-    </div>
+  <div class="eb-cta">
+    <a href="https://www.eventbrite.com/cc/multnomah-libertarian-events-1450739" class="btn-primary" target="_blank" rel="noopener">RSVP on Eventbrite →</a>
   </div>
 </section>
 
@@ -135,32 +122,30 @@ layout: default
 <section class="about" id="about">
   <div class="eyebrow eyebrow-dark">Who We Are</div>
   <div class="sec-title">Multnomah Libertarians</div>
-  <div class="about-grid">
-    <div class="about-body">
-      <p>Multnomah Libertarians serve the Portland metropolitan area, holding monthly in-person meetings, coordinating political action, and hosting social events. Whether you're a longtime libertarian or just liberty-curious, you are welcome at our table!</p>
+  <div class="about-body">
+    <p>Multnomah Libertarians serve the Portland metropolitan area, holding monthly in-person meetings, coordinating political action, and hosting social events. Whether you're a longtime libertarian or just liberty-curious, you are welcome at our table!</p>
+  </div>
+  <div class="about-cards">
+    <div class="officers-card">
+      <h4>Current Officers</h4>
+      {% for officer in site.data.site.officers %}
+      <div class="officer">
+        <span>{{ officer.name }}</span>
+        <span class="officer-role">{{ officer.role }}</span>
+      </div>
+      {% endfor %}
     </div>
-    <div>
-      <div class="officers-card">
-        <h4>Current Officers</h4>
-        {% for officer in site.data.site.officers %}
-        <div class="officer">
-          <span>{{ officer.name }}</span>
-          <span class="officer-role">{{ officer.role }}</span>
-        </div>
-        {% endfor %}
-      </div>
-      <div class="links-card">
-        <h4>Party Links</h4>
-        <p class="links-intro">The Libertarian Party exists at the national, state, and local levels, each of which maintain their own organizational structure and membership.</p>
-        <a href="{{ site.lp_national }}" class="ext-link" target="_blank" rel="noopener">
-          <div><div class="ext-link-name">LP National — lp.org</div><div class="ext-link-desc">America's largest third party</div></div>
-          <span>↗</span>
-        </a>
-        <a href="{{ site.lp_oregon }}" class="ext-link" target="_blank" rel="noopener">
-          <div><div class="ext-link-name">LP Oregon — lporegon.org</div><div class="ext-link-desc">Oregon's party of principle</div></div>
-          <span>↗</span>
-        </a>
-      </div>
+    <div class="links-card">
+      <h4>Party Links</h4>
+      <p class="links-intro">The Libertarian Party exists at the national, state, and local levels, each of which maintain their own organizational structure and membership.</p>
+      <a href="{{ site.lp_national }}" class="ext-link" target="_blank" rel="noopener">
+        <div><div class="ext-link-name">LP National — lp.org</div><div class="ext-link-desc">America's largest third party</div></div>
+        <span>↗</span>
+      </a>
+      <a href="{{ site.lp_oregon }}" class="ext-link" target="_blank" rel="noopener">
+        <div><div class="ext-link-name">LP Oregon — lporegon.org</div><div class="ext-link-desc">Oregon's party of principle</div></div>
+        <span>↗</span>
+      </a>
     </div>
   </div>
 </section>

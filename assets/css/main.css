@@ -97,14 +97,7 @@ section{padding:64px 3rem}
 .event-meta span::before{content:'→ ';color:var(--yellow)}
 .event-desc{font-size:16px;color:var(--muted);line-height:1.6}
 
-/* EVENTBRITE EMBED */
-.eb-wrap{margin-top:32px;background:var(--dark2);border:1px solid rgba(254,208,0,.12);overflow:hidden}
-.eb-label{font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--yellow);opacity:.6;padding:14px 20px 0}
-.eb-clip{overflow:hidden;height:420px;position:relative}
-.eb-clip iframe{width:100%;height:900px;margin-top:-220px;border:none;display:block}
-.eb-fade{position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,var(--dark2));pointer-events:none}
-.eb-footer{padding:10px 20px 14px;text-align:right}
-.eb-link{font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);border:1px solid rgba(254,208,0,.3);padding:7px 16px;display:inline-block}
+.eb-cta{margin-top:32px}
 
 /* NEWS */
 .news-section{background:var(--white)}
@@ -122,8 +115,9 @@ section{padding:64px 3rem}
 
 /* ABOUT */
 .about{background:var(--cream)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:40px}
-.about-body p{font-family:var(--serif);font-size:16px;font-weight:300;color:#4a5568;line-height:1.8}
+.about-body{margin-top:24px;margin-bottom:40px}
+.about-body p{font-family:var(--serif);font-size:18px;font-weight:300;color:#4a5568;line-height:1.8;max-width:780px}
+.about-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .officers-card{background:var(--white);border:1px solid #e0e0e0;border-top:4px solid var(--yellow);padding:24px}
 .officers-card h4{font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
 .officer{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #eee;font-size:15px}
@@ -195,7 +189,7 @@ footer{background:var(--dark);color:var(--muted);padding:48px 3rem 28px;border-t
   .btn-signup,.btn-donate-dark{width:100%;text-align:center}
   .pillars-grid{grid-template-columns:1fr}
   .news-grid{grid-template-columns:1fr}
-  .about-grid{grid-template-columns:1fr;gap:32px}
+  .about-cards{grid-template-columns:1fr}
   .resources-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr;gap:32px}
   .footer-bottom{flex-direction:column}
