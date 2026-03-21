@@ -122,18 +122,20 @@ layout: default
 <section class="about" id="about">
   <div class="eyebrow eyebrow-dark">Who We Are</div>
   <div class="sec-title">Multnomah Libertarians</div>
-  <div class="about-body">
-    <p>Multnomah Libertarians serve the Portland metropolitan area, holding monthly in-person meetings, coordinating political action, and hosting social events. Whether you're a longtime libertarian or just liberty-curious, you are welcome at our table!</p>
-  </div>
-  <div class="about-cards">
-    <div class="officers-card">
-      <h4>Current Officers</h4>
-      {% for officer in site.data.site.officers %}
-      <div class="officer">
-        <span>{{ officer.name }}</span>
-        <span class="officer-role">{{ officer.role }}</span>
+  <div class="about-grid">
+    <div class="about-left">
+      <div class="about-body">
+        <p>Multnomah Libertarians serve the Portland metropolitan area, holding monthly in-person meetings, coordinating political action, and hosting social events. Whether you're a longtime libertarian or just liberty-curious, you are welcome at our table!</p>
       </div>
-      {% endfor %}
+      <div class="officers-card">
+        <h4>Current Officers</h4>
+        {% for officer in site.data.site.officers %}
+        <div class="officer">
+          <span>{{ officer.name }}</span>
+          <span class="officer-role">{{ officer.role }}</span>
+        </div>
+        {% endfor %}
+      </div>
     </div>
     <div class="links-card">
       <h4>Party Links</h4>
