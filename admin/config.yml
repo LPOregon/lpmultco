@@ -3,6 +3,8 @@ backend:
   repo: LPOregon/lpmultco
   branch: main
   app_id: Ov23liK2EncYdaAGkMK1
+  base_url: https://lporegon.github.io/lpmultco
+  auth_endpoint: admin/
   # When transferring to the org, change repo to: their-org/lpmc
   # and update the OAuth app callback URL in GitHub org settings
 
