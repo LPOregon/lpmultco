@@ -1,7 +1,77 @@
 # Multnomah Libertarians — Website
 
-Jekyll site with Decap CMS for non-technical content editing.  
-Live at: https://www.multnomahlibertarians.com
+Jekyll site with Sveltia CMS for non-technical content editing.  
+Live at: https://www.multnomahlibertarians.com  
+Preview: https://lporegon.github.io/lpmultco
+
+---
+
+## Content editing (for non-technical editors)
+
+Go to `https://lporegon.github.io/lpmultco/admin` (or `https://www.multnomahlibertarians.com/admin` once live) and log in with a GitHub personal access token.
+
+### First-time login setup
+
+You need a GitHub account with write access to the LPOregon/lpmultco repo. Then:
+
+1. Go to **GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token (classic)**
+2. Set **Expiration** to "No expiration"
+3. Set **Resource owner** to **LPOregon**
+4. Under **Select scopes**, check **repo** (the top-level checkbox — this includes read/write access to contents)
+5. Click **Generate token** and copy it
+6. Go to `/admin`, click **Sign in with token**, paste the token
+
+You don't need to save the token. If you lose it or it stops working, generate a new one — takes 30 seconds.
+
+### What you can edit in the CMS
+
+- **News & Announcements** — create, edit, and delete posts. Rich text editor. Click Save, it publishes within 1–2 minutes.
+- **Officers** — update names and roles
+- **Meetup details** — time, location, welcome note
+- **Resources** — add, remove, or edit the links section
+
+### Editing static content directly
+
+For things not covered by the CMS — hero text, pillars, page structure — edit `index.html` directly in GitHub:
+
+1. Go to https://github.com/LPOregon/lpmultco
+2. Click `index.html`
+3. Click the pencil (edit) icon
+4. Make your changes
+5. Click **Commit changes** → **Commit directly to main**
+
+The site rebuilds in about 60 seconds. The same approach works for any file in the repo.
+
+---
+
+## Going live on the custom domain
+
+When ready to switch from the github.io preview to `multnomahlibertarians.com`:
+
+1. **Set DNS records** at your domain registrar:
+
+| Type  | Name | Value              |
+|-------|------|--------------------|
+| A     | @    | 185.199.108.153    |
+| A     | @    | 185.199.109.153    |
+| A     | @    | 185.199.110.153    |
+| A     | @    | 185.199.111.153    |
+| CNAME | www  | lporegon.github.io |
+
+2. **Update `_config.yml`**: change `baseurl: "/lpmultco"` to `baseurl: ""`
+3. Go to repo Settings → Pages → add `multnomahlibertarians.com` as custom domain → check **Enforce HTTPS**
+4. Commit and push — site will be live once DNS propagates (usually under an hour)
+
+---
+
+## GitHub Pages setup
+
+If Pages ever needs to be re-enabled:
+
+1. Repo Settings → Pages
+2. Source: Deploy from branch → `main` → `/ (root)` → Save
+
+The site builds automatically on every push to `main`.
 
 ---
 
@@ -13,140 +83,64 @@ Live at: https://www.multnomahlibertarians.com
 
 ### Run locally
 ```bash
-cd lpmc
+cd lpmultco
 bundle install
-bundle exec jekyll serve
+bundle exec jekyll serve --baseurl ""
 ```
-Site runs at http://localhost:4000. Changes to files rebuild automatically.
-
----
-
-## Deploying to GitHub Pages
-
-1. Push repo to GitHub (already done if you're reading this)
-2. Go to **Settings → Pages → Source**: Deploy from branch → `main` → `/` (root)
-3. The site builds automatically on every push to `main`
-4. Custom domain is already set via the `CNAME` file
-
-### DNS records (set at your domain registrar)
-Point `multnomahlibertarians.com` to GitHub Pages with these records:
-
-| Type  | Name | Value          |
-|-------|------|----------------|
-| A     | @    | 185.199.108.153 |
-| A     | @    | 185.199.109.153 |
-| A     | @    | 185.199.110.153 |
-| A     | @    | 185.199.111.153 |
-| CNAME | www  | satat​anicmechanic.github.io |
-
-After transferring to the org, update the CNAME record value to `their-org.github.io`.
-
----
-
-## Setting up Decap CMS (content editing at /admin)
-
-Editors log in at `https://www.multnomahlibertarians.com/admin` using their GitHub account.
-
-### One-time setup: GitHub OAuth app
-
-1. Go to **GitHub → (org or your account) → Settings → Developer settings → OAuth Apps → New OAuth App**
-2. Fill in:
-   - **Application name**: Multnomah Libertarians CMS
-   - **Homepage URL**: `https://www.multnomahlibertarians.com`
-   - **Authorization callback URL**: `https://www.multnomahlibertarians.com/admin/`
-3. Click **Register application**
-4. Copy the **Client ID**
-5. Generate a **Client Secret** and copy it
-6. Open `admin/config.yml` and add under `backend`:
-   ```yaml
-   backend:
-     name: github
-     repo: SatanicMechanic/lpmc
-     branch: main
-     base_url: https://api.github.com
-     auth_endpoint: login/oauth/authorize
-     app_id: YOUR_CLIENT_ID
-   ```
-   Note: the GitHub backend uses implicit OAuth — the Client Secret is not needed in the config.
-
-### Inviting editors
-Editors need a GitHub account and must be added as a collaborator on the repo (or be a member of the org with write access).
-
----
-
-## Content editing (for non-technical editors)
-
-Go to `https://www.multnomahlibertarians.com/admin` and log in with GitHub.
-
-### What you can edit in the CMS:
-- **News & Announcements** — create, edit, and delete posts. Rich text editor. Click Save, it publishes automatically within 1–2 minutes.
-- **Officers** — update names and roles
-- **Meetup details** — time, location, welcome note
-- **Resources** — add, remove, or edit the links section
-
-### Editing static content directly (for advanced edits)
-
-For things not covered by the CMS — like the hero text, pillars section, or page structure — edit `index.html` directly in GitHub:
-
-1. Go to the repo on GitHub
-2. Click `index.html`
-3. Click the pencil (edit) icon
-4. Make your changes
-5. Click **Commit changes** → **Commit directly to main**
-
-The site rebuilds in about 60 seconds. The same approach works for any file in the repo.
-
----
-
-## Transferring to the org (when ready)
-
-1. **Transfer the repo**: repo Settings → Danger Zone → Transfer → enter org name
-2. **Update `admin/config.yml`**: change `repo: SatanicMechanic/lpmc` to `repo: their-org/lpmc`
-3. **Update the OAuth app**: GitHub → OAuth App settings → update the callback URL if needed, or create a new OAuth app under the org
-4. **Update DNS CNAME** record from `satat​anicmechanic.github.io` to `their-org.github.io`
-5. Make all intended org members **Owners** in the org settings
+Site runs at http://localhost:4000.
 
 ---
 
 ## If something goes wrong and the original maintainer is unavailable
 
-Everything you need is in GitHub. No other accounts or services are required.
+Everything lives in GitHub. No other accounts or services are required.
 
-1. **The repo** is owned by the org — you already have full access as an org owner
-2. **The domain** registrar account is controlled by the org — log in and repoint DNS if needed
-3. **The CMS** authenticates via GitHub — if the OAuth app breaks, go to GitHub org Settings → Developer settings → OAuth Apps and create a new one, then update `admin/config.yml`
-4. **GitHub Pages** — if the site stops building, go to repo Settings → Pages and check the build status. Error details are shown there
-5. **To edit anything on the site** without the CMS: edit files directly in GitHub as described above — no local tools required
+1. **The repo** is owned by the LPOregon org — any org owner has full access
+2. **The domain** registrar is controlled by the org — log in and repoint DNS if needed
+3. **The CMS** — each editor generates their own GitHub PAT. If login stops working, generate a new one as described above. No shared credentials, no third-party service to fix.
+4. **GitHub Pages** — if the site stops building, go to repo Settings → Pages for build status and error details
+5. **To edit without the CMS** — edit files directly in GitHub as described above. No local tools required.
 
-If you need to move the site to a fork (e.g. the original repo becomes inaccessible):
-1. Fork the repo to the org
+### If the repo needs to move to a fork
+
+1. Fork the repo into the org (or a new org)
 2. Enable GitHub Pages on the fork (Settings → Pages)
-3. The original maintainer (or GitHub's deceased user process) must remove the custom domain from their repo's Pages settings before you can claim it on the fork
+3. The custom domain `multnomahlibertarians.com` is claimed in the original repo's Pages settings. The original maintainer must remove it before you can claim it on the fork. If the original maintainer is unreachable, GitHub has a deceased user process — it is slow but it exists.
 4. Once released, add `multnomahlibertarians.com` in the fork's Pages settings and update DNS
+
+---
+
+## Adding editors
+
+Editors need a GitHub account and write access to the repo:
+
+1. Go to https://github.com/orgs/LPOregon/people → **Invite member**
+2. Once they accept, go to repo → Settings → Collaborators and teams → add them with **Write** access
+3. They can then generate a PAT and log into `/admin` as described above
 
 ---
 
 ## File structure
 
 ```
-lpmc/
-├── _config.yml          # Site settings, URLs, social links
+lpmultco/
+├── _config.yml          # Build settings and site URLs
 ├── _data/
 │   └── site.yml         # Officers, meetup info, resources (edited via CMS)
 ├── _includes/
-│   ├── nav.html          # Navigation bar
-│   └── footer.html       # Footer
+│   ├── nav.html         # Navigation bar
+│   └── footer.html      # Footer
 ├── _layouts/
-│   ├── default.html      # Main page wrapper
-│   └── post.html         # Blog post wrapper
-├── _posts/               # News posts (edited via CMS)
+│   ├── default.html     # Main page wrapper
+│   └── post.html        # Blog post wrapper
+├── _posts/              # News posts (edited via CMS)
 ├── admin/
-│   ├── index.html        # Decap CMS entry point
-│   └── config.yml        # CMS configuration
+│   ├── index.html       # Sveltia CMS entry point
+│   └── config.yml       # CMS configuration
 ├── assets/
-│   ├── css/main.css      # All styles
-│   └── images/           # Logo and uploaded images
-├── index.html            # Homepage
-├── news.html             # News archive
-└── CNAME                 # Custom domain
+│   ├── css/main.css     # All styles
+│   └── images/          # Logo and uploaded images
+├── index.html           # Homepage
+├── news.html            # News archive
+└── CNAME                # Custom domain
 ```
