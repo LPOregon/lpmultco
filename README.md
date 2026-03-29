@@ -105,7 +105,7 @@ Everything lives in GitHub. No other accounts or services are required.
 
 1. Fork the repo into the org (or a new org)
 2. Enable GitHub Pages on the fork (Settings → Pages)
-3. The custom domain `multnomahlibertarians.com` is claimed in the original repo's Pages settings. The original maintainer must remove it before you can claim it on the fork. If the original maintainer is unreachable, GitHub has a deceased user process — it is slow but it exists.
+3. **3.** The custom domain `multnomahlibertarians.com` is claimed in the original repo's Pages settings. The original maintainer must remove it before you can claim it on the fork. If the original maintainer is unreachable, GitHub has a deceased user process — it is slow but it exists. If GitHub itself becomes untenable, the site is portable to GitLab Pages or Codeberg Pages with minor changes — see the site's maintainer for details, or search "Jekyll GitLab Pages" or "Jekyll Codeberg Pages" for current instructions.
 4. Once released, add `multnomahlibertarians.com` in the fork's Pages settings and update DNS
 
 ---
