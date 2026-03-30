@@ -51,8 +51,15 @@ layout: default
 
   <div class="event-card">
     <div class="event-date">
-      <div class="month">Every</div>
-      <div class="day">1st</div>
+      {% assign nd = site.data.site.meetup.luma_next_date %}
+      {% if nd and nd != "" %}
+        {% assign date_parts = nd | split: " " %}
+        <div class="month">{{ date_parts[0] | truncate: 3, "" }}</div>
+        <div class="day">{{ date_parts[1] | remove: "," }}</div>
+      {% else %}
+        <div class="month">Every</div>
+        <div class="day">1st</div>
+      {% endif %}
       <div class="dow">Sat</div>
     </div>
     <div class="event-info">

@@ -49,6 +49,11 @@ collections:
                 widget: string
                 required: false
                 hint: "Slug from your lu.ma event URL — e.g. 'abc123' from lu.ma/abc123. Leave blank to hide the RSVP button."
+              - label: "Next Event Date"
+                name: luma_next_date
+                widget: string
+                required: false
+                hint: "Display date for the next event card, e.g. 'April 5, 2026'. Update monthly alongside the event ID."
               - label: "Luma Calendar ID"
                 name: luma_calendar_id
                 widget: string
