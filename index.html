@@ -76,9 +76,10 @@ layout: default
   <div class="eb-cta">
     {% if site.data.site.meetup.luma_event_id and site.data.site.meetup.luma_event_id != "" %}
     <a
-      href="https://lu.ma/{{ site.data.site.meetup.luma_event_id }}"
-      class="luma-checkout--button btn-primary"
+      href="https://luma.com/event/{{ site.data.site.meetup.luma_event_id }}"
+      class="btn-primary"
       data-luma-action="checkout"
+      data-luma-event-id="{{ site.data.site.meetup.luma_event_id }}"
     >RSVP →</a>
     <div class="luma-all-events">
       <a href="https://lu.ma/user/multcoliberty" target="_blank" rel="noopener">See all upcoming events →</a>

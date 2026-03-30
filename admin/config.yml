@@ -48,7 +48,7 @@ collections:
                 name: luma_event_id
                 widget: string
                 required: false
-                hint: "Slug from your lu.ma event URL — e.g. 'abc123' from lu.ma/abc123. Leave blank to hide the RSVP button."
+                hint: "Internal Luma event ID. Get it from: Manage event → More tab → Embed Registration Button. Format: evt-XXXXXXXXXXXXXXXXX"
               - label: "Next Event Date"
                 name: luma_next_date
                 widget: string
