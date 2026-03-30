@@ -67,8 +67,29 @@ layout: default
   </div>
 
   <div class="eb-cta">
-    <a href="https://www.eventbrite.com/cc/multnomah-libertarian-events-1450739" class="btn-primary" target="_blank" rel="noopener">RSVP on Eventbrite →</a>
+    {% if site.data.site.meetup.luma_event_id and site.data.site.meetup.luma_event_id != "" %}
+    <a
+      href="https://luma.com/{{ site.data.site.meetup.luma_event_id }}"
+      class="luma-checkout--button btn-primary"
+      data-luma-action="checkout"
+    >RSVP →</a>
+    {% endif %}
   </div>
+
+  {% if site.data.site.meetup.luma_calendar_id and site.data.site.meetup.luma_calendar_id != "" %}
+  <div class="luma-calendar-wrap">
+    <div class="eyebrow" style="margin-top:52px;margin-bottom:16px;">All Upcoming Events</div>
+    <iframe
+      src="https://luma.com/embed/calendar/{{ site.data.site.meetup.luma_calendar_id }}/events?lt=light&styled=0"
+      frameborder="0"
+      class="luma-calendar-frame"
+      allowfullscreen
+      aria-label="Upcoming events calendar"
+    ></iframe>
+  </div>
+  {% endif %}
+
+  <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
 </section>
 
 <!-- NEWS -->

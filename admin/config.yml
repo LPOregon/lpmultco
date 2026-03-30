@@ -44,6 +44,16 @@ collections:
               - {label: "Time", name: "time", widget: "string"}
               - {label: "Schedule", name: "day", widget: "string"}
               - {label: "Welcome Note", name: "notes", widget: "text"}
+              - label: "Luma Event ID"
+                name: luma_event_id
+                widget: string
+                required: false
+                hint: "Slug from your lu.ma event URL — e.g. 'abc123' from lu.ma/abc123. Leave blank to hide the RSVP button."
+              - label: "Luma Calendar ID"
+                name: luma_calendar_id
+                widget: string
+                required: false
+                hint: "From Luma dashboard → Calendar → Share/Embed. Format: cal-xxxxxxxx. Leave blank to hide the calendar."
           - label: "Resources"
             name: "resources"
             widget: "list"
