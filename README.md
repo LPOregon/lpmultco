@@ -29,7 +29,7 @@ You don't need to save the token. If you lose it or it stops working, generate a
 - **Meetup details** — time, location, welcome note
 - **Resources** — add, remove, or edit the links section
 
-### Monthly maintenance — updating the RSVP button
+### Monthly maintenance — updating the event card and RSVP button
 
 Each month after a new event has been created in Luma by the calendar account holder:
 
