@@ -1,7 +1,8 @@
 <nav>
   <div class="nav-brand">
-    <a href="{{ '/' | relative_url }}">
-      <img src="{{ '/assets/images/lpmc-logo.jpg' | relative_url }}" alt="Libertarian Party of Multnomah County" class="nav-logo">
+    <a href="{{ '/' | relative_url }}" class="nav-wordmark-link">
+      <div class="nav-wordmark-primary">Libertarian Party of Multnomah County</div>
+      <div class="nav-wordmark-sub">LP Oregon Affiliate</div>
     </a>
   </div>
   <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
@@ -9,7 +10,6 @@
     <a href="{{ '/#events' | relative_url }}">Events</a>
     <a href="{{ '/news' | relative_url }}">News</a>
     <a href="{{ '/#about' | relative_url }}">About</a>
-    <a href="{{ '/#involved' | relative_url }}">Join</a>
     <a href="{{ '/#resources' | relative_url }}">Resources</a>
     <a href="{{ site.anedot_url }}" class="nav-cta" target="_blank" rel="noopener">Donate</a>
   </div>
