@@ -81,8 +81,6 @@ section{padding:64px 3rem}
 .eb-cta{margin-top:32px}
 .luma-checkout--button{background:var(--yellow)!important;color:var(--dark)!important;font-family:'Roboto',sans-serif!important;font-size:14px!important;font-weight:700!important;letter-spacing:.5px!important;padding:13px 32px!important;border-radius:2px!important;border:none!important;display:inline-block!important;text-decoration:none!important;cursor:pointer;transition:background .2s!important}
 .luma-checkout--button:hover{background:#ffe340!important}
-.luma-inline-wrap{margin-top:28px;border-radius:4px;overflow:hidden;border:1px solid rgba(254,208,0,.15)}
-.luma-inline-frame{width:100%;height:440px;border:none;display:block;background:#fff}
 .luma-all-events{margin-top:16px;text-align:right}
 .luma-all-events a{color:var(--muted);font-size:14px;text-decoration:none;letter-spacing:.3px}
 .luma-all-events a:hover{color:var(--yellow)}
