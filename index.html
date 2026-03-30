@@ -73,26 +73,18 @@ layout: default
     </div>
   </div>
 
-  <div class="eb-cta">
-    {% if site.data.site.meetup.luma_event_id and site.data.site.meetup.luma_event_id != "" %}
-    <a
-      href="https://luma.com/{{ site.data.site.meetup.luma_event_id }}"
-      class="luma-checkout--button btn-primary"
-      data-luma-action="checkout"
-    >RSVP →</a>
-    {% endif %}
-  </div>
-
-  {% if site.data.site.meetup.luma_calendar_id and site.data.site.meetup.luma_calendar_id != "" %}
-  <div class="luma-calendar-wrap">
-    <div class="eyebrow" style="margin-top:52px;margin-bottom:16px;">All Upcoming Events</div>
+  {% if site.data.site.meetup.luma_event_id and site.data.site.meetup.luma_event_id != "" %}
+  <div class="luma-inline-wrap">
     <iframe
-      src="https://luma.com/embed/calendar/{{ site.data.site.meetup.luma_calendar_id }}/events?lt=light&styled=0"
+      src="https://luma.com/embed-checkout/{{ site.data.site.meetup.luma_event_id }}"
       frameborder="0"
-      class="luma-calendar-frame"
+      class="luma-inline-frame"
       allowfullscreen
-      aria-label="Upcoming events calendar"
+      aria-label="Event registration"
     ></iframe>
+  </div>
+  <div class="luma-all-events">
+    <a href="https://luma.com/user/multcoliberty" target="_blank" rel="noopener">See all upcoming events →</a>
   </div>
   {% endif %}
 
