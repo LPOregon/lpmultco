@@ -30,6 +30,17 @@ You don't need to save the token. If you lose it or it stops working, generate a
 - **Meetup details** — time, location, welcome note
 - **Resources** — add, remove, or edit the links section
 
+### Monthly maintenance — updating the RSVP button
+
+Each month when a new event is created in Luma:
+
+1. Go to `luma.com`, open the new event, click **Manage → More tab → Embed Registration Button**
+2. Copy the `evt-XXXXXXXXXXXXXXXXX` ID from the code snippet
+3. Open the CMS → **Site Settings → Meetup Details**
+4. Update **Luma Event ID** with the new `evt-XXXXXXXXXXXXXXXXX` value
+5. Update **Next Event Date** with the display date, e.g. `May 3, 2026`
+6. Click Save — site updates within 1–2 minutes
+
 ### Editing static content directly
 
 For things not covered by the CMS — hero text, pillars, page structure — edit `index.html` directly in GitHub:
