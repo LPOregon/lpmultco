@@ -49,7 +49,8 @@ jobs:
         id: sri
         run: |
           VERSION="${{ steps.versions.outputs.latest }}"
-          HASH=$(curl -sL "https://unpkg.com/@sveltia/cms@${VERSION}/dist/sveltia-cms.js" \
+          HASH=$(curl -sL "https://registry.npmjs.org/@sveltia/cms/-/cms-${VERSION}.tgz" \
+            | tar -xzO 'package/dist/sveltia-cms.js' \
             | openssl dgst -sha384 -binary | base64 -w0)
           echo "hash=$HASH" >> "$GITHUB_OUTPUT"
 

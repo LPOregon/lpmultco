@@ -16,6 +16,9 @@ anedot_url: https://secure.anedot.com/b9ad9d89-92e3-4118-89a4-3e978a4ec2d7/f1f2e
 
 markdown: kramdown
 permalink: pretty
+plugins:
+  - jekyll-sitemap
+
 exclude:
   - README.md
   - Gemfile
