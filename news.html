@@ -7,9 +7,9 @@ title: News
   <div class="sec-title sec-title-light">News &amp; Announcements</div>
 </div>
 <div class="news-archive-list">
-  <div style="max-width:860px">
+  <div class="news-archive-inner">
     {% for post in site.posts %}
-    <a href="{{ post.url | relative_url }}" style="display:block;text-decoration:none;margin-bottom:1px">
+    <a href="{{ post.url | relative_url }}" class="news-archive-link">
       <div class="news-card">
         <div class="news-date">{{ post.date | date: "%b %-d, %Y" }}</div>
         <div class="news-body">
@@ -22,7 +22,7 @@ title: News
       </div>
     </a>
     {% else %}
-    <p style="font-family:var(--serif);font-size:17px;color:#4a5568">No posts yet.</p>
+    <p class="news-empty">No posts yet.</p>
     {% endfor %}
   </div>
 </div>

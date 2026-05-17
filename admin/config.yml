@@ -2,8 +2,6 @@ backend:
   name: github
   repo: LPOregon/lpmultco
   branch: main
-  # When transferring to the org, change repo to: their-org/lpmc
-  # and update the OAuth app callback URL in GitHub org settings
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
@@ -54,11 +52,6 @@ collections:
                 widget: string
                 required: false
                 hint: "Display date for the next event card, e.g. 'April 5, 2026'. Update monthly alongside the event ID."
-              - label: "Luma Calendar ID"
-                name: luma_calendar_id
-                widget: string
-                required: false
-                hint: "From Luma dashboard → Calendar → Share/Embed. Format: cal-xxxxxxxx. Leave blank to hide the calendar."
           - label: "Resources"
             name: "resources"
             widget: "list"

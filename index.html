@@ -3,7 +3,7 @@ layout: default
 ---
 
 <div class="hero">
-  <div class="hero-bg" style="background-image:url('{{ '/assets/images/portland-skyline.jpg' | relative_url }}')"></div>
+  <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-accent"></div>
   <div class="hero-content">
@@ -95,7 +95,7 @@ layout: default
   <div class="sec-title">News &amp; Announcements</div>
   <div class="news-grid">
     {% for post in site.posts limit:2 %}
-    <a href="{{ post.url | relative_url }}" style="text-decoration:none">
+    <a href="{{ post.url | relative_url }}">
       <div class="news-card">
         <div class="news-date">{{ post.date | date: "%b %-d, %Y" }}</div>
         <div class="news-body">

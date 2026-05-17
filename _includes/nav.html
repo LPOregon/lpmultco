@@ -4,8 +4,8 @@
       <div class="nav-wordmark-primary">Libertarian Party of Multnomah County</div>
     </a>
   </div>
-  <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
-  <div class="nav-links">
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+  <div class="nav-links" id="nav-links">
     <a href="{{ '/#events' | relative_url }}">Events</a>
     <a href="{{ '/news' | relative_url }}">News</a>
     <a href="{{ '/#about' | relative_url }}">About</a>

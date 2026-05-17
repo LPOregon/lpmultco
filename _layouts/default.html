@@ -9,13 +9,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-  <link rel="icon" type="image/jpeg" href="{{ '/assets/images/lpmc-logo.jpg' | relative_url }}">
+  <link rel="icon" type="image/png" href="{{ '/assets/images/lpmc-logo.png' | relative_url }}">
+  {% if page.url == '/' %}<link rel="preload" as="image" href="{{ '/assets/images/portland-skyline.jpg' | relative_url }}" fetchpriority="high">{% endif %}
   <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
-  <script data-goatcounter="https://lpmultco.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <script data-goatcounter="https://lpmultco.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
   {% include nav.html %}
   <main>{{ content }}</main>
   {% include footer.html %}
+  <script>
+    (function () {
+      var btn = document.querySelector('.nav-toggle');
+      var links = document.getElementById('nav-links');
+      if (!btn || !links) return;
+      btn.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+      });
+    })();
+  </script>
 </body>
 </html>

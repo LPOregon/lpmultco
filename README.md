@@ -13,14 +13,20 @@ Go to https://www.multnomahlibertarians.com/admin and log in with a GitHub perso
 
 You need a GitHub account with write access to the LPOregon/lpmultco repo. Then:
 
-1. Go to **GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token (classic)**
-2. Set **Expiration** to "No expiration"
+1. Go to **GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token**
+2. Set **Token name** to something like `lpmc-cms`
 3. Set **Resource owner** to **LPOregon**
-4. Under **Select scopes**, check **repo** (the top-level checkbox — this includes read/write access to contents)
-5. Click **Generate token** and copy it
-6. Go to `/admin`, click **Sign in with token**, paste the token
+4. Set **Expiration** to **Custom** and choose a date about **365 days** out
+5. Under **Repository access**, choose **Only select repositories** and pick `LPOregon/lpmultco`
+6. Under **Repository permissions**, set:
+   - **Contents** → Read and write
+   - **Metadata** → Read-only (selected automatically)
+7. Click **Generate token** and copy it
+8. Go to `/admin`, click **Sign in with token**, paste the token
 
-You don't need to save the token. If you lose it or it stops working, generate a new one — takes 30 seconds.
+You don't need to save the token. If you lose it or it stops working, generate a new one — takes 60 seconds. The token will stop working after ~365 days; when that happens, just generate a new one.
+
+Why fine-grained: a classic PAT with `repo` scope gives whoever holds it full read/write on every repo your account can touch. The fine-grained version above is scoped to *only* this repo, *only* the permissions the CMS needs, and *expires*.
 
 ### What you can edit in the CMS
 
@@ -51,17 +57,6 @@ For things not covered by the CMS — hero text, pillars, page structure — edi
 5. Click **Commit changes** → **Commit directly to main**
 
 The site rebuilds in about 60 seconds. The same approach works for any file in the repo.
-
----
-
-## GitHub Pages setup
-
-If Pages ever needs to be re-enabled:
-
-1. Repo Settings → Pages
-2. Source: Deploy from branch → `main` → `/ (root)` → Save
-
-The site builds automatically on every push to `main`.
 
 ---
 
