@@ -117,7 +117,7 @@ lpmultco/
 │   ├── nav.html         # Navigation bar
 │   └── footer.html      # Footer
 ├── _layouts/
-│   ├── default.html     # Main page wrapper (includes Luma embed script)
+│   ├── default.html     # Main page wrapper (head meta, scripts, layout)
 │   └── post.html        # Blog post wrapper
 ├── _posts/              # News posts (edited via CMS)
 ├── admin/
@@ -125,8 +125,9 @@ lpmultco/
 │   └── config.yml       # CMS configuration
 ├── assets/
 │   ├── css/main.css     # All styles
-│   └── images/          # Logo and uploaded images
+│   └── images/          # Logo, favicon, and uploaded images
 ├── index.html           # Homepage
 ├── news.html            # News archive
+├── robots.txt           # Search engine crawl rules
 └── CNAME                # Custom domain
 ```
