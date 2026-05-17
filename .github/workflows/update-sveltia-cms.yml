@@ -1,0 +1,82 @@
+name: Update Sveltia CMS
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Resolve versions
+        id: versions
+        run: |
+          RELEASE=$(curl -sf https://api.github.com/repos/sveltia/sveltia-cms/releases/latest)
+          LATEST=$(echo "$RELEASE" | jq -r '.tag_name | ltrimstr("v")')
+          PUBLISHED_AT=$(echo "$RELEASE" | jq -r '.published_at')
+          AGE_DAYS=$(( ( $(date -u +%s) - $(date -u -d "$PUBLISHED_AT" +%s) ) / 86400 ))
+          CURRENT=$(grep -oP '(?<=@sveltia/cms@)[\d.]+' admin/index.html)
+          echo "latest=$LATEST" >> "$GITHUB_OUTPUT"
+          echo "current=$CURRENT" >> "$GITHUB_OUTPUT"
+          if [[ "$LATEST" == "$CURRENT" ]]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Skipping: already on $LATEST"
+          elif [[ $AGE_DAYS -lt 3 ]]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Skipping: v$LATEST released ${AGE_DAYS}d ago (cooldown: 3d)"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check for existing open PR
+        if: steps.versions.outputs.skip == 'false'
+        id: pr_check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          COUNT=$(gh pr list --search "sveltia-cms in:title" --state open --json number --jq 'length')
+          echo "open=$COUNT" >> "$GITHUB_OUTPUT"
+
+      - name: Compute SRI hash
+        if: steps.versions.outputs.skip == 'false' && steps.pr_check.outputs.open == '0'
+        id: sri
+        run: |
+          VERSION="${{ steps.versions.outputs.latest }}"
+          HASH=$(curl -sL "https://unpkg.com/@sveltia/cms@${VERSION}/dist/sveltia-cms.js" \
+            | openssl dgst -sha384 -binary | base64 -w0)
+          echo "hash=$HASH" >> "$GITHUB_OUTPUT"
+
+      - name: Patch admin/index.html
+        if: steps.versions.outputs.skip == 'false' && steps.pr_check.outputs.open == '0'
+        run: |
+          VERSION="${{ steps.versions.outputs.latest }}"
+          HASH="${{ steps.sri.outputs.hash }}"
+          sed -i \
+            -e "s|@sveltia/cms@[0-9.]*|@sveltia/cms@${VERSION}|" \
+            -e "s|integrity=\"sha384-[^\"]*\"|integrity=\"sha384-${HASH}\"|" \
+            admin/index.html
+
+      - name: Open PR
+        if: steps.versions.outputs.skip == 'false' && steps.pr_check.outputs.open == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          BRANCH="sveltia-cms-${{ steps.versions.outputs.latest }}"
+          git checkout -b "$BRANCH"
+          git add admin/index.html
+          git commit -m "chore: bump Sveltia CMS to v${{ steps.versions.outputs.latest }}"
+          git push origin "$BRANCH"
+          gh pr create \
+            --title "chore: bump Sveltia CMS to v${{ steps.versions.outputs.latest }}" \
+            --body "Bumps Sveltia CMS from v${{ steps.versions.outputs.current }} to v${{ steps.versions.outputs.latest }} and refreshes SRI hash.
+
+          [Release notes](https://github.com/sveltia/sveltia-cms/releases/tag/v${{ steps.versions.outputs.latest }})"
