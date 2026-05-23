@@ -13,9 +13,9 @@ title: News
       <div class="news-card">
         <div class="news-date">{{ post.date | date: "%b %-d, %Y" }}</div>
         <div class="news-body">
-          <div class="news-title">{{ post.title }}</div>
+          <div class="news-title">{{ post.title | escape }}</div>
           {% if post.excerpt %}
-          <div class="news-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</div>
+          <div class="news-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 | escape }}</div>
           {% endif %}
         </div>
         <div class="news-arrow">→</div>

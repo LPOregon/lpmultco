@@ -47,39 +47,39 @@ layout: default
 <section class="events" id="events">
   <div class="eyebrow">Upcoming</div>
   <h2 class="sec-title sec-title-light">Monthly Meetups</h2>
-  <p class="sec-lead sec-lead-light">Join us the {{ site.data.site.meetup.day }} at {{ site.data.site.meetup.time }}. {{ site.data.site.meetup.notes }}</p>
+  <p class="sec-lead sec-lead-light">Join us the {{ site.data.site.meetup.day | escape }} at {{ site.data.site.meetup.time | escape }}. {{ site.data.site.meetup.notes | escape }}</p>
 
   <div class="event-card">
     <div class="event-date">
       {% assign nd = site.data.site.meetup.luma_next_date %}
       {% if nd and nd != "" %}
-        {% assign date_parts = nd | split: " " %}
-        <div class="month">{{ date_parts[0] | truncate: 3, "" }}</div>
-        <div class="day">{{ date_parts[1] | remove: "," }}</div>
+        <div class="month">{{ nd | date: "%b" | escape }}</div>
+        <div class="day">{{ nd | date: "%-d" | escape }}</div>
+        <div class="dow">{{ nd | date: "%a" | escape }}</div>
       {% else %}
         <div class="month">Every</div>
         <div class="day">1st</div>
+        <div class="dow">Sat</div>
       {% endif %}
-      <div class="dow">{% if nd and nd != "" %}{{ nd | date: "%a" }}{% else %}Sat{% endif %}</div>
     </div>
     <div class="event-info">
       <h3>Multnomah County Libertarian Meetup</h3>
       <div class="event-meta">
-        <span>{{ site.data.site.meetup.time }}</span>
-        <span>{{ site.data.site.meetup.location }}</span>
-        <span>{{ site.data.site.meetup.address }}</span>
+        <span>{{ site.data.site.meetup.time | escape }}</span>
+        <span>{{ site.data.site.meetup.location | escape }}</span>
+        <span>{{ site.data.site.meetup.address | escape }}</span>
       </div>
-      <p class="event-desc">{{ site.data.site.meetup.notes }}</p>
+      <p class="event-desc">{{ site.data.site.meetup.notes | escape }}</p>
     </div>
   </div>
 
   <div class="eb-cta">
     {% if site.data.site.meetup.luma_event_id and site.data.site.meetup.luma_event_id != "" %}
     <a
-      href="https://luma.com/event/{{ site.data.site.meetup.luma_event_id }}"
+      href="https://luma.com/event/{{ site.data.site.meetup.luma_event_id | uri_escape }}"
       class="btn-primary"
       data-luma-action="checkout"
-      data-luma-event-id="{{ site.data.site.meetup.luma_event_id }}"
+      data-luma-event-id="{{ site.data.site.meetup.luma_event_id | escape }}"
     >RSVP →</a>
     <div class="luma-all-events">
       <a href="https://lu.ma/user/multcoliberty" target="_blank" rel="noopener">See all upcoming events →</a>
@@ -99,9 +99,9 @@ layout: default
       <div class="news-card">
         <div class="news-date">{{ post.date | date: "%b %-d, %Y" }}</div>
         <div class="news-body">
-          <div class="news-title">{{ post.title }}</div>
+          <div class="news-title">{{ post.title | escape }}</div>
           {% if post.excerpt %}
-          <div class="news-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</div>
+          <div class="news-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 | escape }}</div>
           {% endif %}
         </div>
         <div class="news-arrow">→</div>
@@ -127,8 +127,8 @@ layout: default
         <h3>Current Officers</h3>
         {% for officer in site.data.site.officers %}
         <div class="officer">
-          <span>{{ officer.name }}</span>
-          <span class="officer-role">{{ officer.role }}</span>
+          <span>{{ officer.name | escape }}</span>
+          <span class="officer-role">{{ officer.role | escape }}</span>
         </div>
         {% endfor %}
       </div>
@@ -159,10 +159,14 @@ layout: default
   <p class="sec-lead">Reading, watching, and thinking about liberty.</p>
   <div class="resources-grid">
     {% for resource in site.data.site.resources %}
-    <a href="{{ resource.url }}" class="resource-item" target="_blank" rel="noopener">
+    {% assign rurl = resource.url | default: "" %}
+    {% assign rp8 = rurl | slice: 0, 8 | downcase %}
+    {% assign rp7 = rurl | slice: 0, 7 | downcase %}
+    {% if rp8 == "https://" or rp7 == "http://" %}{% assign rhref = rurl %}{% else %}{% assign rhref = "#" %}{% endif %}
+    <a href="{{ rhref | escape }}" class="resource-item" target="_blank" rel="noopener">
       <div>
-        <div class="resource-name">{{ resource.name }}</div>
-        <div class="resource-desc">{{ resource.description }}</div>
+        <div class="resource-name">{{ resource.name | escape }}</div>
+        <div class="resource-desc">{{ resource.description | escape }}</div>
       </div>
       <div class="resource-arrow">↗</div>
     </a>

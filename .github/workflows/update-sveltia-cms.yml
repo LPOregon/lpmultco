@@ -23,6 +23,10 @@ jobs:
           PUBLISHED_AT=$(echo "$RELEASE" | jq -r '.published_at')
           AGE_DAYS=$(( ( $(date -u +%s) - $(date -u -d "$PUBLISHED_AT" +%s) ) / 86400 ))
           CURRENT=$(grep -oP '(?<=@sveltia/cms@)[\d.]+' admin/index.html)
+          if [[ ! "$LATEST" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.]+)?$ ]]; then
+            echo "Refusing: unexpected upstream version format '$LATEST'" >&2
+            exit 1
+          fi
           echo "latest=$LATEST" >> "$GITHUB_OUTPUT"
           echo "current=$CURRENT" >> "$GITHUB_OUTPUT"
           if [[ "$LATEST" == "$CURRENT" ]]; then
@@ -47,8 +51,9 @@ jobs:
       - name: Compute SRI hash
         if: steps.versions.outputs.skip == 'false' && steps.pr_check.outputs.open == '0'
         id: sri
+        env:
+          VERSION: ${{ steps.versions.outputs.latest }}
         run: |
-          VERSION="${{ steps.versions.outputs.latest }}"
           HASH=$(curl -sL "https://registry.npmjs.org/@sveltia/cms/-/cms-${VERSION}.tgz" \
             | tar -xzO 'package/dist/sveltia-cms.js' \
             | openssl dgst -sha384 -binary | base64 -w0)
@@ -56,9 +61,10 @@ jobs:
 
       - name: Patch admin/index.html
         if: steps.versions.outputs.skip == 'false' && steps.pr_check.outputs.open == '0'
+        env:
+          VERSION: ${{ steps.versions.outputs.latest }}
+          HASH: ${{ steps.sri.outputs.hash }}
         run: |
-          VERSION="${{ steps.versions.outputs.latest }}"
-          HASH="${{ steps.sri.outputs.hash }}"
           sed -i \
             -e "s|@sveltia/cms@[0-9.]*|@sveltia/cms@${VERSION}|" \
             -e "s|integrity=\"sha384-[^\"]*\"|integrity=\"sha384-${HASH}\"|" \
@@ -68,16 +74,18 @@ jobs:
         if: steps.versions.outputs.skip == 'false' && steps.pr_check.outputs.open == '0'
         env:
           GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.versions.outputs.latest }}
+          CURRENT: ${{ steps.versions.outputs.current }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          BRANCH="sveltia-cms-${{ steps.versions.outputs.latest }}"
+          BRANCH="sveltia-cms-${VERSION}"
           git checkout -b "$BRANCH"
           git add admin/index.html
-          git commit -m "chore: bump Sveltia CMS to v${{ steps.versions.outputs.latest }}"
+          git commit -m "chore: bump Sveltia CMS to v${VERSION}"
           git push origin "$BRANCH"
           gh pr create \
-            --title "chore: bump Sveltia CMS to v${{ steps.versions.outputs.latest }}" \
-            --body "Bumps Sveltia CMS from v${{ steps.versions.outputs.current }} to v${{ steps.versions.outputs.latest }} and refreshes SRI hash.
+            --title "chore: bump Sveltia CMS to v${VERSION}" \
+            --body "Bumps Sveltia CMS from v${CURRENT} to v${VERSION} and refreshes SRI hash.
 
-          [Release notes](https://github.com/sveltia/sveltia-cms/releases/tag/v${{ steps.versions.outputs.latest }})"
+          [Release notes](https://github.com/sveltia/sveltia-cms/releases/tag/v${VERSION})"
