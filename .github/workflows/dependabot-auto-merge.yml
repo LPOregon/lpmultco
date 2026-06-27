@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Fetch Dependabot metadata
         id: metadata
-        uses: dependabot/fetch-metadata@d7267b523578de88ed6fe37b0bc540f71ef7a02a # v2.3.0
+        uses: dependabot/fetch-metadata@d7267f607e9d3fb96fc2fbe83e0af444713e90b7 # v2.3.0
 
       - name: Enable auto-merge
         run: gh pr merge --auto --squash "$PR_URL"
