@@ -83,7 +83,7 @@ jobs:
           git checkout -b "$BRANCH"
           git add admin/index.html
           git commit -m "chore: bump Sveltia CMS to v${VERSION}"
-          git push origin "$BRANCH"
+          git push --force origin "$BRANCH"
           gh pr create \
             --title "chore: bump Sveltia CMS to v${VERSION}" \
             --body "Bumps Sveltia CMS from v${CURRENT} to v${VERSION} and refreshes SRI hash.
