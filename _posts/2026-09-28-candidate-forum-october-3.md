@@ -1,5 +1,5 @@
 ---
-title: September newsletter - Candidate Forum October 3
+title: October newsletter - Candidate Forum October 3
 date: 2026-09-27
 ---
 
