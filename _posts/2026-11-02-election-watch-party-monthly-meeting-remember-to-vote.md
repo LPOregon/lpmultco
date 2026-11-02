@@ -1,5 +1,5 @@
 ---
-title: Election Watch Party! Monthly Meeting! Remember to vote!
+title: 'November Newsletter: Election Watch Party! Monthly Meeting! Remember to vote!'
 date: 2026-11-01
 ---
 
