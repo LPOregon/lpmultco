@@ -22,3 +22,6 @@ resources:
   - name: Cato Institute
     url: https://www.cato.org/
     description: Policy research and analysis from America's leading libertarian think tank
+  - name: Liberty International
+    url: https://liberty-intl.org/
+    description: Connecting freedom advocates in over 100 countries through education, conferences, and Liberty Camps
