@@ -20,7 +20,7 @@ img{max-width:100%;height:auto}
 /* NAV */
 nav{background:var(--dark);padding:0 var(--gutter);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;border-bottom:3px solid var(--yellow);height:68px;position:sticky;top:0;z-index:100}
 .nav-brand{display:flex;align-items:center}
-.nav-wordmark-link{text-decoration:none;display:block}
+.nav-wordmark-link{text-decoration:none;display:block;color:var(--white)}
 .nav-wordmark-primary{font-family:var(--sans);font-size:16px;font-weight:700;color:var(--white);letter-spacing:1px;text-transform:uppercase;line-height:1}
 .nav-links{display:flex;align-items:center;justify-content:center}
 .nav-links a{font-size:14px;font-weight:400;letter-spacing:.5px;color:rgba(255,255,255,.65);padding:0 14px;height:68px;display:flex;align-items:center;border-bottom:3px solid transparent;transition:all .2s;margin-bottom:-3px}

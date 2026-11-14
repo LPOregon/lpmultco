@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
   {% if page.url == '/' %}<link rel="preload" as="image" href="{{ '/assets/images/portland-skyline.jpg' | relative_url }}" fetchpriority="high">{% endif %}
   <script data-goatcounter="https://lpmultco.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
