@@ -17,6 +17,7 @@ collections:
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false}
+      - {label: "External link (optional)", name: "link", widget: "string", required: false, pattern: ["^https?://.+", "Must start with http:// or https://"], hint: "If set, the news card links straight here instead of to a post page. Good for newsletter posts."}
       - {label: "Body", name: "body", widget: "markdown"}
 
   # Site settings — officers, meetup info, resources

@@ -1,0 +1,21 @@
+{%- assign post = include.post -%}
+{%- assign lk = post.link | default: "" -%}
+{%- assign l8 = lk | slice: 0, 8 | downcase -%}
+{%- assign l7 = lk | slice: 0, 7 | downcase -%}
+{%- if l8 == "https://" or l7 == "http://" -%}
+  {%- assign href = lk -%}{%- assign ext = true -%}
+{%- else -%}
+  {%- assign href = post.url | relative_url -%}{%- assign ext = false -%}
+{%- endif -%}
+<a href="{{ href | escape }}" class="news-link"{% if ext %} target="_blank" rel="noopener"{% endif %}>
+  <div class="news-card">
+    <div class="news-date">{{ post.date | date: "%b %-d, %Y" }}</div>
+    <div class="news-body">
+      <div class="news-title">{{ post.title | escape }}</div>
+      {% if post.excerpt %}
+      <div class="news-excerpt">{{ post.excerpt | strip_html | truncatewords: include.words | escape }}</div>
+      {% endif %}
+    </div>
+    <div class="news-arrow">{% if ext %}↗{% else %}→{% endif %}</div>
+  </div>
+</a>
